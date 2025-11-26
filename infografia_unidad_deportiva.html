@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Unidad Deportiva — San Bartolo Tutotepec</title>
+  <style>
+    :root{--accent:#1e90ff;--bg:#f7f9fc;--card:#ffffff}
+    body{font-family:Inter,system-ui,Arial;background:var(--bg);margin:0;color:#0b2545}
+    .wrap{max-width:980px;margin:24px auto;padding:20px}
+    header{display:flex;align-items:center;gap:16px}
+    header img{width:96px;height:96px;object-fit:cover;border-radius:8px;box-shadow:0 6px 18px rgba(2,12,27,0.08)}
+    h1{margin:0;font-size:20px}
+    p.lead{margin:6px 0 0;color:#254b7a}
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:18px}
+    .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 20px rgba(12,24,40,0.06)}
+    .list{display:flex;flex-direction:column;gap:8px}
+    .icon{width:36px;height:36px;border-radius:8px;background:#eef6ff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)}
+    .mini{font-size:13px;color:#4a6b8a}
+    .map{height:220px;border-radius:10px;overflow:hidden}
+    button.cta{background:var(--accent);color:white;border:0;padding:10px 12px;border-radius:8px;cursor:pointer}
+    .timeline{display:flex;flex-direction:column;gap:10px}
+    .timeline .item{display:flex;gap:12px;align-items:flex-start}
+    .stats{display:flex;gap:12px;flex-wrap:wrap}
+    .stat{flex:1;min-width:120px;padding:10px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);text-align:center}
+    footer{margin-top:18px;text-align:center;color:#6b7f96;font-size:13px}
+    @media(max-width:900px){.grid{grid-template-columns:1fr} .card{padding:12px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><rect width='100%' height='100%' fill='%23e6f2ff'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='28' fill='%2310365a' font-family='Arial'>UD</text></svg>" alt="Logo">
+      <div>
+        <h1>Unidad Deportiva — San Bartolo Tutotepec</h1>
+        <p class="lead">Infografía interactiva: instalaciones, historia, horarios y cómo apoyar. Lista para imprimir QR y difundir.</p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <main class="card">
+        <section>
+          <h3>¿Qué encontrarás?</h3>
+          <div class="list">
+            <div><span class="icon">C</span> Cancha techada multiusos (baloncesto / futbolito)</div>
+            <div><span class="icon">P</span> Pista para trote y atletismo</div>
+            <div><span class="icon">G</span> Gimnasio al aire libre y zona de aparatos</div>
+            <div><span class="icon">J</span> Juegos infantiles y áreas de espectadores</div>
+          </div>
+        </section>
+
+        <section style="margin-top:12px">
+          <h3>Historia clave</h3>
+          <div class="timeline">
+            <div class="item"><strong>2014</strong> - Intervenciones y mejoras iniciales documentadas.</div>
+            <div class="item"><strong>2025</strong> - Remodelación entrega oficial: inversión reportada aprox. $9,450,000 MXN.</div>
+          </div>
+        </section>
+
+        <section style="margin-top:12px">
+          <h3>Programas y uso</h3>
+          <p class="mini">Escuela municipal de basquetbol, ligas infantiles, torneos locales y eventos comunitarios. Público objetivo: estudiantes del COBAEH, niños, jóvenes y familias.</p>
+
+          <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+            <button class="cta" onclick="showPopup('horarios')">Ver horarios</button>
+            <button class="cta" style="background:#2bb673" onclick="showPopup('contacto')">Contacto COMUDE</button>
+          </div>
+        </section>
+
+        <section style="margin-top:12px">
+          <h3>Impacto</h3>
+          <div class="stats">
+            <div class="stat"><div style="font-size:18px">+500</div><div class="mini">beneficiarios (estimado)</div></div>
+            <div class="stat"><div style="font-size:18px">3</div><div class="mini">eventos anuales</div></div>
+            <div class="stat"><div style="font-size:18px">$9.45M</div><div class="mini">inversión 2025 (MXN)</div></div>
+          </div>
+        </section>
+
+        <section style="margin-top:12px">
+          <h3>Riesgos y recomendaciones</h3>
+          <ul class="mini">
+            <li>Mantenimiento constante (piso, iluminación, techumbre).</li>
+            <li>Programas para reducir vandalismo y ofrecer alternativas juveniles.</li>
+            <li>Mejorar transporte público y accesos peatonales.</li>
+          </ul>
+        </section>
+
+      </main>
+
+      <aside>
+        <div class="card">
+          <h4>Mapa — Cómo llegar</h4>
+          <div class="map" id="map"> <iframe style="border:0;width:100%;height:100%" src="https://www.google.com/maps?q=Unidad+Deportiva+San+Bartolo+Tutotepec&output=embed"></iframe></div>
+          <p class="mini" style="margin-top:8px">Abajo del COBAEH Plantel San Bartolo — acceso peatonal desde plaza municipal. <br><strong>Consejo:</strong> usa el botón para abrir en Maps.</p>
+          <div style="display:flex;gap:8px;margin-top:8px"><button class="cta" onclick="openMaps()">Abrir en Maps</button></div>
+        </div>
+
+        <div class="card" style="margin-top:12px;text-align:center">
+          <h4>QR para difusión</h4>
+          <p class="mini">Escanea para abrir la infografía desde el enlace público que subirás (o descarga el archivo HTML y súbelo a Drive/GitHub Pages).</p>
+          <img id="qrimg" src="" alt="QR" style="max-width:100%;height:auto;margin-top:8px;border-radius:8px;border:1px solid #e6effa">
+          <p class="mini" style="margin-top:8px">Si necesitas, puedo generar el QR final cuando me des el enlace público.</p>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h4>Fuentes</h4>
+          <ol class="mini">
+            <li>Boletines municipales y cobertura local sobre la remodelación 2025.</li>
+            <li>Reportes deportivos regionales y notas de prensa.</li>
+            <li>Observación y uso comunitario (COBAEH y vecinos).</li>
+          </ol>
+        </div>
+
+      </aside>
+    </div>
+
+    <footer class="card" style="margin-top:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div><strong>Unidad Deportiva — San Bartolo Tutotepec</strong> • Documento preparado para infografía interactiva.</div>
+        <div class="mini">Diseño: ChatGPT • Fecha: 26 nov 2025</div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Popups and scripts -->
+  <div id="popup" style="position:fixed;left:0;top:0;width:100%;height:100%;display:none;align-items:center;justify-content:center;background:rgba(2,10,22,0.45);z-index:40">
+    <div style="background:white;border-radius:12px;padding:16px;max-width:520px;width:92%"><div id="pcontent"></div><div style="text-align:right;margin-top:12px"><button class="cta" onclick="closePopup()">Cerrar</button></div></div>
+  </div>
+
+  <script>
+    function showPopup(key){
+      const p=document.getElementById('pcontent');
+      if(key==='horarios') p.innerHTML=`<h3>Horarios (ejemplo)</h3><p class='mini'>Lunes a Viernes: escuela basquet 16:00–19:00<br>Sábados: ligas y torneos 9:00–14:00<br>Domingos: eventos comunitarios</p>`;
+      if(key==='contacto') p.innerHTML=`<h3>Contacto COMUDE</h3><p class='mini'>Tel: (pagina municipal) • Dirección: Plaza Municipal • Responsable: Dirección de Deporte</p>`;
+      document.getElementById('popup').style.display='flex';
+    }
+    function closePopup(){document.getElementById('popup').style.display='none'}
+    function openMaps(){window.open('https://www.google.com/maps?q=Unidad+Deportiva+San+Bartolo+Tutotepec','_blank')}
+
+    // Insert QR image placeholder (user can replace with final QR after hosting)
+    const placeholder='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><rect width='100%' height='100%' fill='#fff'/><text x='50%' y='50%' text-anchor='middle' font-size='18' fill='%2310365a' font-family='Arial'>QR: SUBE TU ENLACE</text></svg>`);
+    document.getElementById('qrimg').src=placeholder;
+  </script>
+</body>
+</html>
